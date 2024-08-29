@@ -3,7 +3,6 @@ import * as path from "path";
 import * as fs from "fs";
 
 const config = require("./config.json");
-console.log(config);
 
 console.log("Bot is starting...");
 
