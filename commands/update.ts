@@ -2,7 +2,7 @@ import { CacheType, EmbedBuilder, Interaction, SlashCommandBuilder } from 'disco
 
 const { exec } = require('child_process');
 
-const isTesting = true;
+const isTesting = false;
 
 module.exports = {
     data: new SlashCommandBuilder()
