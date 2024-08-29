@@ -44,7 +44,7 @@ const rest = new REST({ version: '10' }).setToken(config.token);
     }
 })();
 
-client.on("interactionCreate", async (interaction) => {
+client.on("interactionCreate", async (interaction: any) => {
     if (!interaction.isCommand()) return;
 
     for (let i = 0; i < _commands.length; i++) {
