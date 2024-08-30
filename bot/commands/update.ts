@@ -1,8 +1,8 @@
 import { CacheType, EmbedBuilder, Interaction, SlashCommandBuilder } from 'discord.js';
 
 const { exec } = require('child_process');
-
-const isTesting = true;
+const config = require("../config.json");
+const isTesting = config.testing;
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -54,7 +54,7 @@ module.exports = {
                 .setTitle("Updating the website")
                 .setDescription("<a:wait_cursor:1142730437286952980> Updating website files");
             
-        await interaction.reply(loadingEmbed);
+        await interaction.reply({ embeds: [ loadingEmbed]});
         
         await exec("git -C /website/website pull", (error: Error | null, stdout: string, stderr: string) => {
             if (error) {
