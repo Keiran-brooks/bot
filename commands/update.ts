@@ -1,13 +1,8 @@
 import { CacheType, EmbedBuilder, Interaction, SlashCommandBuilder } from 'discord.js';
 
 const { exec } = require('child_process');
-<<<<<<< HEAD:bot/commands/update.ts
 const config = require("../config.json");
 const isTesting = config.testing;
-=======
-
-const isTesting = false;
->>>>>>> main:commands/update.ts
 
 module.exports = {
     data: new SlashCommandBuilder()

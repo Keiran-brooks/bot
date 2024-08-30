@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "@discordjs/rest": "^2.3.0",
+    "axios": "^1.7.5",
     "bot": "file:",
     "discord.js": "^14.15.3",
     "ts-node": "^10.9.2",
