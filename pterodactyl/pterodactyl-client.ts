@@ -32,11 +32,14 @@ interface ServerResources {
 class PterodactylClient {
     private apiKey: string;
     private apiUrl: string;
+    private API_user_key: string;
     private client: AxiosInstance;
+    private client_two: AxiosInstance
 
-    constructor(apiKey: string, apiUrl: string = 'https://your-pterodactyl-url.com/api') {
+    constructor(apiKey: string, API_user_key: string, apiUrl: string = 'https://your-pterodactyl-url.com/api') {
         this.apiKey = apiKey;
         this.apiUrl = apiUrl;
+        this.API_user_key = API_user_key
 
         this.client = axios.create({
             baseURL: this.apiUrl,
@@ -45,6 +48,15 @@ class PterodactylClient {
                 'Content-Type': 'application/json',
                 'Accept': 'Application/vnd.pterodactyl.v1+json',
             },
+        });
+
+        this.client_two = axios.create({
+            baseURL: this.apiUrl,
+            headers: {
+                'Authorization': `Bearer: ${this.API_user_key}`,
+                'Content-Type': 'application/json',
+                'Accept': 'Application/vnd.pterodactyl.v1+json',
+            }
         });
     }
 
@@ -73,7 +85,8 @@ class PterodactylClient {
 
     async getServerResourceUsage(serverId: string): Promise<ServerResources> {
         try {
-            const response = await this.client.get(`/client/servers/${serverId}/resources`, {
+            
+            const response = await this.client_two.get(`/client/servers/${serverId}/resources`, {
                 params: { include: 'allocations' },
             });
             return response.data.attributes.resources;

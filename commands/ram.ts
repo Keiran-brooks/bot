@@ -22,7 +22,7 @@ module.exports = {
         }
         
         const apiUrl = 'https://panel.keiran.club/api';
-        const client = new PterodactylClient(apiKey, apiUrl);
+        const client = new PterodactylClient(apiKey, config.panel.API_user_key, apiUrl);
 
         let statusInfo = "<a:wait_cursor:1142730437286952980> Pulling from API...\n:black_large_square: Fetch process info";
         let content = "";

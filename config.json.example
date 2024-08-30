@@ -4,6 +4,7 @@
 	"guildId": "your-server-id-goes-here",
 	"testing": false,
 	"panel": {
-		"API_key": "API-key-from-panel"
+		"API_key": "API-key-from-panel",
+		"API_user_key": "API-key-from-panel-under-user"
 	}
 }
