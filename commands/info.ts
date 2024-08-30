@@ -1,8 +1,4 @@
-import { CacheType, EmbedBuilder, Interaction, SlashCommandBuilder } from 'discord.js';
-
-const { exec } = require('child_process');
-const config = require("../config.json");
-const isTesting = config.testing;
+import { EmbedBuilder, SlashCommandBuilder } from 'discord.js';
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -19,6 +15,6 @@ module.exports = {
                 "ChoacuryOS Website: https://github.com/TeamChoacury/website", inline: true }
         ]).setFooter({ text: `Finished at ${new Date()}` });
 
-        await interaction.editReply({ embeds: [ embed ]});
+        await interaction.reply({ embeds: [ embed ]});
     },
 };
