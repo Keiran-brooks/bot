@@ -59,6 +59,7 @@ module.exports = {
             //await loadingEmbed.setColor(0xFF0000);
             
             await interaction.editReply({ embeds: [ loadingEmbed ]});
+            return;
         }
 
         const uptime: string = formatSeconds(process.uptime());
