@@ -21,6 +21,13 @@ interface Server {
     // Add other properties as needed
 }
 
+interface ServerResources {
+    memory_bytes: number;
+    cpu_absolute: number;
+    disk_bytes: number;
+    network_rx_bytes: number;
+    network_tx_bytes: number;
+}
 
 class PterodactylClient {
     private apiKey: string;
@@ -58,6 +65,18 @@ class PterodactylClient {
                 params: { include: 'allocations' },
             });
             return response.data.attributes;
+        } catch (error) {
+            console.error('Error fetching server details:', error);
+            throw error;
+        }
+    }
+
+    async getServerResourceUsage(serverId: string): Promise<ServerResources> {
+        try {
+            const response = await this.client.get(`/client/servers/${serverId}/resources`, {
+                params: { include: 'allocations' },
+            });
+            return response.data.attributes.resources;
         } catch (error) {
             console.error('Error fetching server details:', error);
             throw error;

@@ -37,13 +37,14 @@ module.exports = {
         try {
             const serverId = 23;
             const resources = await client.getServerDetails("23"); //client.getServerResources(serverId);
+            const resourceUsage = await client.getServerResourceUsage("449dacf2");
             //console.log(`Server ${serverId} RAM Usage: ${resources.memory_bytes / 1024 / 1024} MB`);
             statusInfo = "✅ Pulled from API\n<a:wait_cursor:1142730437286952980> Fetching process info...";
             content = `API fetched resource information:\nCPU: **${resources.cpu_absolute}** / ${resources.limits.cpu}\n` +
-                `RAM: **${resources.memory_bytes / 1024 / 1024} MB** / ${resources.limits.memory} MB\n` +
-                `Disk: **${resources.disk_bytes / 1024 / 1024} MB** / ${resources.limits.disk} MB\n` +
-                `Network receive: **${resources.network_rx_bytes / 1024 / 1024} MB**\n` +
-                `Network send: **${resources.network_tx_bytes / 1024 / 1024} MB**\n\n` +
+                `RAM: **${resourceUsage.memory_bytes / 1024 / 1024} MB** / ${resources.limits.memory} MB\n` +
+                `Disk: **${resourceUsage.disk_bytes / 1024 / 1024} MB** / ${resources.limits.disk} MB\n` +
+                `Network receive: **${resourceUsage.network_rx_bytes / 1024 / 1024} MB**\n` +
+                `Network send: **${resourceUsage.network_tx_bytes / 1024 / 1024} MB**\n\n` +
                 `Name: ${resources.name}\n` +
                 `ID: ${resources.id}\n` +
                 `State: ${resources.state}`;
