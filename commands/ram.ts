@@ -55,6 +55,7 @@ module.exports = {
         } catch (error) {
             console.error('Failed to fetch server resources:', error);
             statusInfo = "❌ Failed to get resource information usage.\n:black_large_square: Fetch process info";
+            await loadingEmbed.setColor(0xFF0000);
             await loadingEmbed.setDescription(statusInfo + `\n\nDebug information:\n${error}`);
             //await loadingEmbed.setColor(0xFF0000);
             
