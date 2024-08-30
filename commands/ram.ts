@@ -92,5 +92,5 @@ function formatSeconds(seconds: number): string {
     const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
 
-    return `${years}y ${months}m ${days}d ${hours}h ${minutes}m ${remainingSeconds}s`;
+    return `${years}y ${months}m ${days}d ${hours}h ${minutes}m ${(remainingSeconds).toFixed(0)}s`;
 }
