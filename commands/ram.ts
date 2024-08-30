@@ -65,7 +65,7 @@ module.exports = {
 
         statusInfo = "✅ Pulled from API\n✅ Fetched process info";
         content += `\n\nProcess fetch resource information: Uptime: ${uptime}\n` +
-            `Memory usage: **${memory.heapUsed / 1024 / 1024} MB** / ${memory.heapTotal / 1024 / 1024} MB ${memory.external}`;
+            `Memory usage: **${(memory.heapUsed / 1024 / 1024).toFixed(2)} MB** / ${(memory.heapTotal / 1024 / 1024).toFixed(2)} MB`;
 
         loadingEmbed.setFooter({ text: `Finished at ${new Date()}` });
 
@@ -77,9 +77,20 @@ module.exports = {
 };
 
 function formatSeconds(seconds: number): string {
+    const years = Math.floor(seconds / (365 * 24 * 3600));
+    seconds %= (365 * 24 * 3600);
+
+    const months = Math.floor(seconds / (30 * 24 * 3600));
+    seconds %= (30 * 24 * 3600);
+
+    const days = Math.floor(seconds / (24 * 3600));
+    seconds %= (24 * 3600);
+
     const hours = Math.floor(seconds / 3600);
-    const minutes = Math.floor((seconds % 3600) / 60);
+    seconds %= 3600;
+
+    const minutes = Math.floor(seconds / 60);
     const remainingSeconds = seconds % 60;
 
-    return `${hours}h ${minutes}m ${remainingSeconds}s`;
+    return `${years}y ${months}m ${days}d ${hours}h ${minutes}m ${remainingSeconds}s`;
 }
